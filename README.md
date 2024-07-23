@@ -25,6 +25,14 @@
 
     - Устанавливаем Vim или другой редактор текста
 
-    ``` bash
-    pacman -Sy vim 
-    ```
+        ``` bash
+        pacman -Sy vim 
+        ```
+
+    - Клонируем и переходим в репу
+
+        ``` bash
+        git clone https://github.com/ealol2142/host_setup.git &&
+        cd host_setup &&
+        wget --user=hetzner --password=download https://download.hetzner.com/bootimages/Ubuntu-2204-jammy-amd64-base.tar.gz
+        ```
