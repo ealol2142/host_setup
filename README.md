@@ -34,5 +34,33 @@
         ``` bash
         git clone https://github.com/ealol2142/host_setup.git &&
         cd host_setup &&
-        wget --user=hetzner --password=download https://download.hetzner.com/bootimages/Ubuntu-2204-jammy-amd64-base.tar.gz
+        ```
+
+    - Смотрим количество подключенных nvme*n1 дисков 
+
+        ``` bash
+        lsblk | grep nvme
+        ```
+    - Редактируем setup.conf файл
+
+        ``` bash
+        vim tmp/setup.conf
+        ```
+        Где:
+        - вместо <enter CRYPTPASSWORD> вводим криптоключ, который можно взять у ПМа или старшего девопса.
+        - Удаляем лишние "DRIVE* /dev/nvme*n1", оставяем только подключенные nvme\*n1
+        - После нажимаем esc -> :q -> enter
+
+    - Добавляем свой паблик ssh ключ 
+
+        ``` bash
+        echo "<you_ssh_key>" >> tmp/authorized_keys
+        ```
+        Где:
+         - <you_ssh_key> - ваш паблик ssh ключ
+
+    - Запускаем установку
+
+        ``` bash
+        ./start.sh
         ```
