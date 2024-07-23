@@ -1,0 +1,4 @@
+PART swap swap 4G
+PART /boot ext3 1024M
+PART / ext4 2014G
+PART /home ext4 all
