@@ -33,7 +33,7 @@
 
         ``` bash
         git clone https://github.com/ealol2142/host_setup.git &&
-        cd host_setup &&
+        cd host_setup
         ```
 
     - Смотрим количество подключенных nvme*n1 дисков 
@@ -49,7 +49,7 @@
         Где:
         - вместо <enter CRYPTPASSWORD> вводим криптоключ, который можно взять у ПМа или старшего девопса.
         - Удаляем лишние "DRIVE* /dev/nvme*n1", оставяем только подключенные nvme\*n1
-        - После нажимаем esc -> :q -> enter
+        - После нажимаем esc -> :wq -> enter
 
     - Добавляем свой паблик ssh ключ 
 
@@ -64,3 +64,30 @@
         ``` bash
         ./start.sh
         ```
+
+    - После установки должна появиться надпись "INSTALATION CONPLETE", перезагружаем систему
+    
+        ``` bash
+        reboot
+        ```
+
+    - Когда появится сообщение "Begin: Starting dropbear ..." - нажимаем enter. 
+
+    - "Please unlock disk luks...:" - Text -> вставляем криптоключ в поле для ввода текста -> Paste. Ждем 3-5 секунд и нажимаем enter
+
+    ГОТОВО!
+
+В данной сборке используется кастомный apt sources.list, по этому не работает скачаиване apt пакетов. Что бы это исправить нужно в терминале зайти на машину:
+
+``` bash
+ssh root@0.0.0.0
+```
+Где:
+    0.0.0.0 - IP адрес сервера
+
+И заменить кастомный apt sources.list на оригинальный
+``` bash
+rm -rf /etc/apt/sources.list &&
+mv /etc/apt/sources.list.curtin.old /etc/apt/sources.list &&
+apt update
+```

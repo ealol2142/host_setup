@@ -31,7 +31,5 @@ else
 fi
 
 echo "STARTING..." &&
-cd /root/ &&
+cd /root/tmp &&
 installimage -a -c setup.conf -x post-install.sh
-
-
